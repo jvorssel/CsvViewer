@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,7 @@ namespace CsvViewer
         public Container()
         {
             InitializeComponent();
+            Icon = Properties.Resources.Main;
         }
 
         /// <summary>
@@ -77,7 +79,7 @@ namespace CsvViewer
             if (Page < 1)
                 Page = 1;
 
-            var rows = await Helper.UpdateGrid(Options, Page, PageSize);
+            var rows = await Helper.GetCsvRows(Options, Page, PageSize);
             await OnLoadComplete();
             UpdateGrid(rows);
         }
@@ -143,6 +145,18 @@ namespace CsvViewer
         #endregion Worker
 
         #region UI
+
+        /// <summary>
+        ///     Show the about Dialog.
+        /// </summary>
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new About();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
 
         /// <summary>
         ///     The form has loaded.
@@ -374,5 +388,7 @@ namespace CsvViewer
         #endregion
 
         #endregion UI
+
+        
     }
 }

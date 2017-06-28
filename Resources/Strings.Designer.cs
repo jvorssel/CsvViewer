@@ -70,6 +70,15 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Should originate from the Github, please inform me if you got this from another website..
+        /// </summary>
+        internal static string ABOUT_INFO {
+            get {
+                return ResourceManager.GetString("ABOUT_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backslash.
         /// </summary>
         internal static string BACKSLACK {
@@ -142,6 +151,15 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jeroen Vorsselman.
+        /// </summary>
+        internal static string CREATOR_NAME {
+            get {
+                return ResourceManager.GetString("CREATOR_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Csv file (*.csv).
         /// </summary>
         internal static string CSV_FILE {
@@ -196,6 +214,15 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Github.
+        /// </summary>
+        internal static string GITHUB {
+            get {
+                return ResourceManager.GetString("GITHUB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The first line contains column names..
         /// </summary>
         internal static string HAS_COLUMN_LINE {
@@ -214,6 +241,15 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LinkedIn.
+        /// </summary>
+        internal static string LINKED_IN {
+            get {
+                return ResourceManager.GetString("LINKED_IN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Load complete.
         /// </summary>
         internal static string LOAD_COMPLETE {
@@ -228,6 +264,15 @@ namespace CsvViewer.Resources {
         internal static string LOADING {
             get {
                 return ResourceManager.GetString("LOADING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Made by.
+        /// </summary>
+        internal static string MADE_BY {
+            get {
+                return ResourceManager.GetString("MADE_BY", resourceCulture);
             }
         }
         
@@ -354,6 +399,15 @@ namespace CsvViewer.Resources {
         internal static string TAB {
             get {
                 return ResourceManager.GetString("TAB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks!.
+        /// </summary>
+        internal static string THANKS {
+            get {
+                return ResourceManager.GetString("THANKS", resourceCulture);
             }
         }
         

@@ -89,20 +89,21 @@ namespace CsvViewer
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(152, 22);
             this.OpenMenuItem.Text = global::CsvViewer.Resources.Strings.OPEN_FILE;
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = global::CsvViewer.Resources.Strings.ABOUT;
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = global::CsvViewer.Resources.Strings.CLOSE;
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -341,8 +342,6 @@ namespace CsvViewer
             this.DataView.Location = new System.Drawing.Point(12, 64);
             this.DataView.Name = "DataView";
             this.DataView.ReadOnly = true;
-            DataView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised;
-            DataView.EnableHeadersVisualStyles = true;
             this.DataView.Size = new System.Drawing.Size(1385, 584);
             this.DataView.TabIndex = 1;
             // 

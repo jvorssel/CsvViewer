@@ -8,3 +8,14 @@ c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Deb
 c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.csproj.GenerateResource.Cache
 c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.exe
 c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.pdb
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Debug\CsvViewer.csprojResolveAssemblyReference.cache
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Debug\CsvViewer.Container.resources
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Debug\CsvViewer.Properties.Resources.resources
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Debug\CsvViewer.Resources.Strings.resources
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Debug\CsvViewer.csproj.GenerateResource.Cache
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Debug\CsvViewer.exe
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Debug\CsvViewer.pdb
+C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Debug\CsvViewer.exe.config
+C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Debug\CsvViewer.exe
+C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Debug\CsvViewer.pdb
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Debug\CsvViewer.About.resources
