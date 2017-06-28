@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Enc = System.Text.Encoding;
@@ -23,10 +24,19 @@ namespace CsvViewer.Utility
         private readonly bool _useFileStream = false;
         private Expression<Func<string, bool>> _predicate;
 
+        private static bool _useBuffer = false;
+        private static int _bufferThreshold = -1;
+        private static readonly List<string> _buffer = new List<string>();
+
         /// <summary>
         ///     The <see cref="Path"/> for the <see cref="FileEnumerable"/> to read.
         /// </summary>
-        public string Path { get; }
+        public string Path { get; private set; }
+
+        public FileEnumerable()
+        {
+            
+        }
 
         /// <summary>
         ///     Create a new <see cref="FileEnumerable"/> instance with a <paramref name="path"/>
@@ -52,6 +62,38 @@ namespace CsvViewer.Utility
             _fileMode = fileMode;
             _fileAccess = fileAccess;
             _fileShare = fileShare;
+        }
+
+        /// <summary>
+        ///     If the <see cref="FileEnumerable"/> should buffer the file.
+        /// </summary>
+        public FileEnumerable EnableBuffer(int thresholdMb = 50)
+        {
+            _bufferThreshold = thresholdMb;
+
+            _useBuffer  = new FileInfo(Path).Length <= 50 * 1_000_000;
+            return this;
+        }
+
+        /// <summary>
+        ///     Clear the buffer for the <see cref="FileEnumerable"/>.
+        /// </summary>
+        public FileEnumerable Dump()
+        {
+            _bufferThreshold = -1;
+            _buffer.Clear();
+            return this;
+        }
+
+        /// <summary>
+        ///     Reset the skip, take and predicate settings.
+        /// </summary>
+        public FileEnumerable Reset()
+        {
+            SkipAmount = 0;
+            TakeAmount = 0;
+            _predicate = null;
+            return this;
         }
 
         /// <summary>
@@ -104,6 +146,11 @@ namespace CsvViewer.Utility
         /// </summary>
         public async Task<long> CountAsync()
         {
+            if (_useBuffer && _buffer.Any())
+            {
+                return _predicate != null ? _buffer.Count(_predicate.Compile()) : _buffer.Count;
+            }
+
             using (var file = new FileStream(Path, _fileMode, _fileAccess, _fileShare))
             {
                 long lineCount = 0;
@@ -129,6 +176,9 @@ namespace CsvViewer.Utility
         /// </summary>
         public long Count()
         {
+            if (_useBuffer && _buffer.Any())
+                return _predicate != null ? _buffer.Count(_predicate.Compile()) : _buffer.Count;
+
             using (var file = new FileStream(Path, _fileMode, _fileAccess, _fileShare))
             {
                 long lineCount = 0;
@@ -154,6 +204,23 @@ namespace CsvViewer.Utility
         /// </summary>
         public bool HasMoreRowsThan(int amount)
         {
+            if (_useBuffer && _buffer.Any())
+            {
+                var count = 0;
+                foreach (var line in _buffer)
+                {
+                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                        continue;
+
+                    if (count >= amount)
+                        return true;
+
+                    count++;
+                }
+
+                return false;
+            }
+
             var index = 0;
             using (var reader = ResolveStreamReader())
             {
@@ -173,10 +240,27 @@ namespace CsvViewer.Utility
         }
 
         /// <summary>
-        ///     Check if the <see cref="File"/> contains more rows than the given <paramref name="amount"/> asynchronously.
+        ///     Check if the <see cref="File"/> contains more lines than the given <paramref name="amount"/> asynchronously.
         /// </summary>
-        public async Task<bool> HasMoreRowsThanAsync(int amount)
+        public async Task<bool> HasMoreLinesThanAsync(int amount)
         {
+            if (_useBuffer && _buffer.Any())
+            {
+                var count = 0;
+                foreach (var line in _buffer)
+                {
+                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                        continue;
+
+                    if (count >= amount)
+                        return true;
+
+                    count++;
+                }
+
+                return false;
+            }
+
             var index = 0;
             using (var reader = ResolveStreamReader())
             {
@@ -197,16 +281,23 @@ namespace CsvViewer.Utility
         }
 
         /// <summary>
-        ///     Read the <see cref="First"/> row in the <see cref="File"/>.
+        ///     Read the <see cref="First"/> line in the <see cref="File"/>.
         /// </summary>
         public string First()
         {
+            if (_useBuffer && _buffer.Any())
+                return _buffer.First();
+
             using (var reader = ResolveStreamReader())
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
-                    return line;
+                {
+                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                        continue;
 
+                    return line;
+                }
                 reader.Close();
             }
 
@@ -214,15 +305,23 @@ namespace CsvViewer.Utility
         }
 
         /// <summary>
-        ///     Read the <see cref="First"/> row in the <see cref="File"/> asynchronously.
+        ///     Read the <see cref="First"/> line in the <see cref="File"/> asynchronously.
         /// </summary>
         public async Task<string> FirstAsync()
         {
+            if (_useBuffer && _buffer.Any())
+                return _buffer.First();
+
             using (var reader = ResolveStreamReader())
             {
                 string line;
                 while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                        continue;
+
                     return line;
+                }
 
                 reader.Close();
             }
@@ -235,6 +334,35 @@ namespace CsvViewer.Utility
         /// </summary>
         public async Task<List<string>> ToListAsync()
         {
+            if (_useBuffer && _buffer.Any())
+            {
+                var enumerable = _buffer as IEnumerable<string>;
+
+                if (SkipAmount > 0)
+                    enumerable = enumerable.Skip(SkipAmount);
+
+                if (_predicate != null)
+                    enumerable = enumerable.Where(_predicate.Compile());
+
+                if (TakeAmount > 0)
+                    enumerable = enumerable.Take(TakeAmount);
+
+                return enumerable.Take(TakeAmount).ToList();
+            }
+
+            if (_useBuffer)
+            {
+                _buffer.Clear();
+                using (var reader = ResolveStreamReader())
+                {
+                    string line;
+                    while ((line = await reader.ReadLineAsync()) != null)
+                        _buffer.Add(line);
+
+                    return await ToListAsync();
+                }
+            }
+
             var result = new List<string>();
             using (var reader = ResolveStreamReader())
             {
@@ -268,6 +396,33 @@ namespace CsvViewer.Utility
         /// </summary>
         public IEnumerator<string> GetEnumerator()
         {
+            if (_useBuffer && _buffer.Any())
+            {
+                var took = 0;
+                foreach (var line in _buffer)
+                {
+                    if (took >= TakeAmount)
+                        break;
+
+                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                        continue;
+
+                    took++;
+                    yield return line;
+                }
+            }
+
+            if (_useBuffer)
+            {
+                _buffer.Clear();
+                using (var reader = ResolveStreamReader())
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                        _buffer.Add(line);
+                }
+            }
+
             using (var reader = ResolveStreamReader())
             {
                 for (var i = 0; i < SkipAmount; i++)

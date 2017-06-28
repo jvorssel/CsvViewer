@@ -41,11 +41,6 @@ namespace CsvViewer
             this.ActionPanel = new System.Windows.Forms.Panel();
             this.PageSizeLabel = new System.Windows.Forms.Label();
             this.PageSizeDropDown = new System.Windows.Forms.ComboBox();
-            this.HasColumnRowCheckBox = new System.Windows.Forms.CheckBox();
-            this.CommentSymbolTextBox = new System.Windows.Forms.TextBox();
-            this.CommentLabel = new System.Windows.Forms.Label();
-            this.DelimiterDropDown = new System.Windows.Forms.ComboBox();
-            this.DelimiterLabel = new System.Windows.Forms.Label();
             this.PageNumberTextBox = new System.Windows.Forms.TextBox();
             this.LastPage = new System.Windows.Forms.Button();
             this.FirstPage = new System.Windows.Forms.Button();
@@ -53,15 +48,35 @@ namespace CsvViewer
             this.PreviousPage = new System.Windows.Forms.Button();
             this.NextPage = new System.Windows.Forms.Button();
             this.PageLabel = new System.Windows.Forms.Label();
+            this.CommentSymbolTextBox = new System.Windows.Forms.TextBox();
+            this.CommentLabel = new System.Windows.Forms.Label();
+            this.HasColumnRowCheckBox = new System.Windows.Forms.CheckBox();
+            this.DelimiterDropDown = new System.Windows.Forms.ComboBox();
+            this.DelimiterLabel = new System.Windows.Forms.Label();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.PlaceholderStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ColumnCountStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.RowCountStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.EncodingLabel = new System.Windows.Forms.Label();
+            this.EncodingDropDown = new System.Windows.Forms.ComboBox();
+            this.FileUpdatedPanel = new System.Windows.Forms.Panel();
+            this.ReloadLink = new System.Windows.Forms.LinkLabel();
+            this.FileUpdatedLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.ColumnLabel = new System.Windows.Forms.Label();
+            this.KeywordLabel = new System.Windows.Forms.Label();
+            this.ColumnDropDown = new System.Windows.Forms.ComboBox();
+            this.KeywordTextBox = new System.Windows.Forms.TextBox();
+            this.SearchButton = new System.Windows.Forms.Button();
             this.DataView = new CsvViewer.CsvDataView();
             this.MenuStrip.SuspendLayout();
             this.ActionPanel.SuspendLayout();
             this.StatusStrip.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.FileUpdatedPanel.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,21 +104,21 @@ namespace CsvViewer
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(122, 22);
             this.OpenMenuItem.Text = global::CsvViewer.Resources.Strings.OPEN_FILE;
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.aboutToolStripMenuItem.Text = global::CsvViewer.Resources.Strings.ABOUT;
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.closeToolStripMenuItem.Text = global::CsvViewer.Resources.Strings.CLOSE;
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -128,11 +143,6 @@ namespace CsvViewer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ActionPanel.Controls.Add(this.PageSizeLabel);
             this.ActionPanel.Controls.Add(this.PageSizeDropDown);
-            this.ActionPanel.Controls.Add(this.HasColumnRowCheckBox);
-            this.ActionPanel.Controls.Add(this.CommentSymbolTextBox);
-            this.ActionPanel.Controls.Add(this.CommentLabel);
-            this.ActionPanel.Controls.Add(this.DelimiterDropDown);
-            this.ActionPanel.Controls.Add(this.DelimiterLabel);
             this.ActionPanel.Controls.Add(this.PageNumberTextBox);
             this.ActionPanel.Controls.Add(this.LastPage);
             this.ActionPanel.Controls.Add(this.FirstPage);
@@ -140,7 +150,7 @@ namespace CsvViewer
             this.ActionPanel.Controls.Add(this.PreviousPage);
             this.ActionPanel.Controls.Add(this.NextPage);
             this.ActionPanel.Controls.Add(this.PageLabel);
-            this.ActionPanel.Location = new System.Drawing.Point(12, 27);
+            this.ActionPanel.Location = new System.Drawing.Point(12, 139);
             this.ActionPanel.Name = "ActionPanel";
             this.ActionPanel.Size = new System.Drawing.Size(1385, 31);
             this.ActionPanel.TabIndex = 2;
@@ -165,53 +175,6 @@ namespace CsvViewer
             this.PageSizeDropDown.Size = new System.Drawing.Size(66, 21);
             this.PageSizeDropDown.TabIndex = 17;
             this.PageSizeDropDown.SelectedIndexChanged += new System.EventHandler(this.PageSizeDropDown_SelectedIndexChanged);
-            // 
-            // HasColumnRowCheckBox
-            // 
-            this.HasColumnRowCheckBox.AutoSize = true;
-            this.HasColumnRowCheckBox.Location = new System.Drawing.Point(821, 8);
-            this.HasColumnRowCheckBox.Name = "HasColumnRowCheckBox";
-            this.HasColumnRowCheckBox.Size = new System.Drawing.Size(200, 17);
-            this.HasColumnRowCheckBox.TabIndex = 16;
-            this.HasColumnRowCheckBox.Text = global::CsvViewer.Resources.Strings.HAS_COLUMN_LINE;
-            this.HasColumnRowCheckBox.UseVisualStyleBackColor = true;
-            this.HasColumnRowCheckBox.CheckedChanged += new System.EventHandler(this.HasColumnRowCheckBox_CheckedChanged);
-            // 
-            // CommentSymbolTextBox
-            // 
-            this.CommentSymbolTextBox.Location = new System.Drawing.Point(1281, 6);
-            this.CommentSymbolTextBox.Name = "CommentSymbolTextBox";
-            this.CommentSymbolTextBox.Size = new System.Drawing.Size(101, 20);
-            this.CommentSymbolTextBox.TabIndex = 14;
-            this.CommentSymbolTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CommentSymbolTextBox_KeyUp);
-            // 
-            // CommentLabel
-            // 
-            this.CommentLabel.AutoSize = true;
-            this.CommentLabel.Location = new System.Drawing.Point(1187, 9);
-            this.CommentLabel.Name = "CommentLabel";
-            this.CommentLabel.Size = new System.Drawing.Size(88, 13);
-            this.CommentLabel.TabIndex = 15;
-            this.CommentLabel.Text = "Comment Symbol";
-            // 
-            // DelimiterDropDown
-            // 
-            this.DelimiterDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DelimiterDropDown.FormattingEnabled = true;
-            this.DelimiterDropDown.Location = new System.Drawing.Point(1080, 6);
-            this.DelimiterDropDown.Name = "DelimiterDropDown";
-            this.DelimiterDropDown.Size = new System.Drawing.Size(101, 21);
-            this.DelimiterDropDown.TabIndex = 14;
-            this.DelimiterDropDown.SelectedIndexChanged += new System.EventHandler(this.DelimiterDropDown_SelectedIndexChanged);
-            // 
-            // DelimiterLabel
-            // 
-            this.DelimiterLabel.AutoSize = true;
-            this.DelimiterLabel.Location = new System.Drawing.Point(1027, 9);
-            this.DelimiterLabel.Name = "DelimiterLabel";
-            this.DelimiterLabel.Size = new System.Drawing.Size(47, 13);
-            this.DelimiterLabel.TabIndex = 10;
-            this.DelimiterLabel.Text = "Delimiter";
             // 
             // PageNumberTextBox
             // 
@@ -287,6 +250,60 @@ namespace CsvViewer
             this.PageLabel.Text = "0/0";
             this.PageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // CommentSymbolTextBox
+            // 
+            this.CommentSymbolTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CommentSymbolTextBox.Location = new System.Drawing.Point(275, 29);
+            this.CommentSymbolTextBox.Name = "CommentSymbolTextBox";
+            this.CommentSymbolTextBox.Size = new System.Drawing.Size(267, 20);
+            this.CommentSymbolTextBox.TabIndex = 14;
+            this.CommentSymbolTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CommentSymbolTextBox_KeyUp);
+            // 
+            // CommentLabel
+            // 
+            this.CommentLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CommentLabel.AutoSize = true;
+            this.CommentLabel.Location = new System.Drawing.Point(3, 32);
+            this.CommentLabel.Name = "CommentLabel";
+            this.CommentLabel.Size = new System.Drawing.Size(88, 13);
+            this.CommentLabel.TabIndex = 15;
+            this.CommentLabel.Text = "Comment Symbol";
+            this.CommentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // HasColumnRowCheckBox
+            // 
+            this.HasColumnRowCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.HasColumnRowCheckBox.AutoSize = true;
+            this.HasColumnRowCheckBox.Location = new System.Drawing.Point(3, 83);
+            this.HasColumnRowCheckBox.Name = "HasColumnRowCheckBox";
+            this.HasColumnRowCheckBox.Size = new System.Drawing.Size(101, 17);
+            this.HasColumnRowCheckBox.TabIndex = 16;
+            this.HasColumnRowCheckBox.Text = global::CsvViewer.Resources.Strings.HAS_HEADER;
+            this.HasColumnRowCheckBox.UseVisualStyleBackColor = true;
+            this.HasColumnRowCheckBox.CheckedChanged += new System.EventHandler(this.HasColumnRowCheckBox_CheckedChanged);
+            // 
+            // DelimiterDropDown
+            // 
+            this.DelimiterDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DelimiterDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DelimiterDropDown.FormattingEnabled = true;
+            this.DelimiterDropDown.Location = new System.Drawing.Point(275, 3);
+            this.DelimiterDropDown.Name = "DelimiterDropDown";
+            this.DelimiterDropDown.Size = new System.Drawing.Size(267, 21);
+            this.DelimiterDropDown.TabIndex = 14;
+            this.DelimiterDropDown.SelectedIndexChanged += new System.EventHandler(this.DelimiterDropDown_SelectedIndexChanged);
+            // 
+            // DelimiterLabel
+            // 
+            this.DelimiterLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DelimiterLabel.AutoSize = true;
+            this.DelimiterLabel.Location = new System.Drawing.Point(3, 6);
+            this.DelimiterLabel.Name = "DelimiterLabel";
+            this.DelimiterLabel.Size = new System.Drawing.Size(47, 13);
+            this.DelimiterLabel.TabIndex = 10;
+            this.DelimiterLabel.Text = "Delimiter";
+            this.DelimiterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // StatusStrip
             // 
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -330,6 +347,157 @@ namespace CsvViewer
             this.RowCountStripLabel.Size = new System.Drawing.Size(44, 19);
             this.RowCountStripLabel.Text = global::CsvViewer.Resources.Strings.ROWS;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.DelimiterLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.CommentSymbolTextBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.DelimiterDropDown, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.CommentLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.HasColumnRowCheckBox, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.EncodingLabel, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.EncodingDropDown, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.FileUpdatedPanel, 1, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 27);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 106);
+            this.tableLayoutPanel1.TabIndex = 17;
+            // 
+            // EncodingLabel
+            // 
+            this.EncodingLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EncodingLabel.AutoSize = true;
+            this.EncodingLabel.Location = new System.Drawing.Point(3, 58);
+            this.EncodingLabel.Name = "EncodingLabel";
+            this.EncodingLabel.Size = new System.Drawing.Size(52, 13);
+            this.EncodingLabel.TabIndex = 17;
+            this.EncodingLabel.Text = "Encoding";
+            this.EncodingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // EncodingDropDown
+            // 
+            this.EncodingDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EncodingDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EncodingDropDown.FormattingEnabled = true;
+            this.EncodingDropDown.Location = new System.Drawing.Point(275, 55);
+            this.EncodingDropDown.Name = "EncodingDropDown";
+            this.EncodingDropDown.Size = new System.Drawing.Size(267, 21);
+            this.EncodingDropDown.TabIndex = 18;
+            this.EncodingDropDown.SelectedIndexChanged += new System.EventHandler(this.EncodingDropDown_SelectedIndexChanged);
+            // 
+            // FileUpdatedPanel
+            // 
+            this.FileUpdatedPanel.Controls.Add(this.ReloadLink);
+            this.FileUpdatedPanel.Controls.Add(this.FileUpdatedLabel);
+            this.FileUpdatedPanel.Location = new System.Drawing.Point(275, 81);
+            this.FileUpdatedPanel.Name = "FileUpdatedPanel";
+            this.FileUpdatedPanel.Size = new System.Drawing.Size(267, 22);
+            this.FileUpdatedPanel.TabIndex = 19;
+            this.FileUpdatedPanel.Visible = false;
+            // 
+            // ReloadLink
+            // 
+            this.ReloadLink.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ReloadLink.AutoSize = true;
+            this.ReloadLink.Location = new System.Drawing.Point(229, 3);
+            this.ReloadLink.Name = "ReloadLink";
+            this.ReloadLink.Size = new System.Drawing.Size(41, 13);
+            this.ReloadLink.TabIndex = 1;
+            this.ReloadLink.TabStop = true;
+            this.ReloadLink.Text = "Reload";
+            this.ReloadLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ReloadLink_LinkClicked);
+            // 
+            // FileUpdatedLabel
+            // 
+            this.FileUpdatedLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.FileUpdatedLabel.AutoSize = true;
+            this.FileUpdatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileUpdatedLabel.Location = new System.Drawing.Point(-3, 3);
+            this.FileUpdatedLabel.Name = "FileUpdatedLabel";
+            this.FileUpdatedLabel.Size = new System.Drawing.Size(130, 13);
+            this.FileUpdatedLabel.TabIndex = 0;
+            this.FileUpdatedLabel.Text = "The file was updated.";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.ColumnLabel, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.KeywordLabel, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.ColumnDropDown, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.KeywordTextBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.SearchButton, 1, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(563, 27);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(469, 106);
+            this.tableLayoutPanel2.TabIndex = 18;
+            // 
+            // ColumnLabel
+            // 
+            this.ColumnLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ColumnLabel.AutoSize = true;
+            this.ColumnLabel.Location = new System.Drawing.Point(3, 6);
+            this.ColumnLabel.Name = "ColumnLabel";
+            this.ColumnLabel.Size = new System.Drawing.Size(42, 13);
+            this.ColumnLabel.TabIndex = 12;
+            this.ColumnLabel.Text = "Column";
+            this.ColumnLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // KeywordLabel
+            // 
+            this.KeywordLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.KeywordLabel.AutoSize = true;
+            this.KeywordLabel.Location = new System.Drawing.Point(3, 32);
+            this.KeywordLabel.Name = "KeywordLabel";
+            this.KeywordLabel.Size = new System.Drawing.Size(48, 13);
+            this.KeywordLabel.TabIndex = 11;
+            this.KeywordLabel.Text = "Keyword";
+            this.KeywordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ColumnDropDown
+            // 
+            this.ColumnDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ColumnDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ColumnDropDown.FormattingEnabled = true;
+            this.ColumnDropDown.Location = new System.Drawing.Point(237, 3);
+            this.ColumnDropDown.Name = "ColumnDropDown";
+            this.ColumnDropDown.Size = new System.Drawing.Size(229, 21);
+            this.ColumnDropDown.TabIndex = 13;
+            this.ColumnDropDown.SelectedIndexChanged += new System.EventHandler(this.ColumnDropDown_SelectedIndexChanged);
+            // 
+            // KeywordTextBox
+            // 
+            this.KeywordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KeywordTextBox.Location = new System.Drawing.Point(237, 29);
+            this.KeywordTextBox.Name = "KeywordTextBox";
+            this.KeywordTextBox.Size = new System.Drawing.Size(229, 20);
+            this.KeywordTextBox.TabIndex = 14;
+            this.KeywordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeywordTextBox_KeyUp);
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SearchButton.Location = new System.Drawing.Point(237, 55);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(229, 20);
+            this.SearchButton.TabIndex = 15;
+            this.SearchButton.Text = global::CsvViewer.Resources.Strings.SEARCH;
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.FindKeywordButton_Click);
+            // 
             // DataView
             // 
             this.DataView.AllowUserToAddRows = false;
@@ -337,19 +505,21 @@ namespace CsvViewer
             this.DataView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.DataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataView.Location = new System.Drawing.Point(12, 64);
+            this.DataView.Location = new System.Drawing.Point(12, 176);
             this.DataView.Name = "DataView";
-            this.DataView.ReadOnly = true;
-            this.DataView.Size = new System.Drawing.Size(1385, 584);
+            this.DataView.Size = new System.Drawing.Size(1385, 472);
             this.DataView.TabIndex = 1;
+            this.DataView.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.DataView_SortCompare);
             // 
             // Container
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1409, 684);
+            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.ActionPanel);
             this.Controls.Add(this.DataView);
@@ -364,6 +534,12 @@ namespace CsvViewer
             this.ActionPanel.PerformLayout();
             this.StatusStrip.ResumeLayout(false);
             this.StatusStrip.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.FileUpdatedPanel.ResumeLayout(false);
+            this.FileUpdatedPanel.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -400,6 +576,18 @@ namespace CsvViewer
         private CheckBox HasColumnRowCheckBox;
         private Label PageSizeLabel;
         private ComboBox PageSizeDropDown;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label EncodingLabel;
+        private ComboBox EncodingDropDown;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label ColumnLabel;
+        private Label KeywordLabel;
+        private ComboBox ColumnDropDown;
+        private TextBox KeywordTextBox;
+        private Button SearchButton;
+        private Panel FileUpdatedPanel;
+        private Label FileUpdatedLabel;
+        private LinkLabel ReloadLink;
     }
 }
 

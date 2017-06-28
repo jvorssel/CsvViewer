@@ -8,6 +8,13 @@ namespace CsvViewer.Utility {
     public static class StringExtensions
     {
         /// <summary>
+        ///     Simple count implementation for looking if the <see cref="string"/> <paramref name="@this"/>
+        ///     <paramref name="contains"/> a value.
+        /// </summary>
+        public static bool ContainsQuick(this string @this, string contains)
+            => (@this.Length - @this.Replace(contains, string.Empty).Length) / contains.Length > 0;
+
+        /// <summary>
         ///     Find the Delimiter symbol in the <see cref="IEnumerable{T}"/> <paramref name="rows"/>
         ///     by finding the frequency of a symbol that is equal for each row.
         /// </summary>

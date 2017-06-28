@@ -255,4 +255,25 @@
   <data name="ABOUT_INFO" xml:space="preserve">
     <value>Should originate from the Github, please inform me if you got this from another website.</value>
   </data>
+  <data name="ENCODING" xml:space="preserve">
+    <value>Encoding</value>
+  </data>
+  <data name="HAS_HEADER" xml:space="preserve">
+    <value>Has header row</value>
+  </data>
+  <data name="KEYWORD" xml:space="preserve">
+    <value>Keyword</value>
+  </data>
+  <data name="QUOTE_SYMBOL" xml:space="preserve">
+    <value>String quote</value>
+  </data>
+  <data name="SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="FILE_CHANGED" xml:space="preserve">
+    <value>The file was updated.</value>
+  </data>
+  <data name="RELOAD" xml:space="preserve">
+    <value>Reload</value>
+  </data>
 </root>

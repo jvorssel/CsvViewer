@@ -196,11 +196,29 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Encoding.
+        /// </summary>
+        internal static string ENCODING {
+            get {
+                return ResourceManager.GetString("ENCODING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         internal static string FILE {
             get {
                 return ResourceManager.GetString("FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file was updated..
+        /// </summary>
+        internal static string FILE_CHANGED {
+            get {
+                return ResourceManager.GetString("FILE_CHANGED", resourceCulture);
             }
         }
         
@@ -232,11 +250,29 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Has header row.
+        /// </summary>
+        internal static string HAS_HEADER {
+            get {
+                return ResourceManager.GetString("HAS_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incides.
         /// </summary>
         internal static string INDICES {
             get {
                 return ResourceManager.GetString("INDICES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyword.
+        /// </summary>
+        internal static string KEYWORD {
+            get {
+                return ResourceManager.GetString("KEYWORD", resourceCulture);
             }
         }
         
@@ -340,6 +376,24 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to String quote.
+        /// </summary>
+        internal static string QUOTE_SYMBOL {
+            get {
+                return ResourceManager.GetString("QUOTE_SYMBOL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reload.
+        /// </summary>
+        internal static string RELOAD {
+            get {
+                return ResourceManager.GetString("RELOAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Result.
         /// </summary>
         internal static string RESULT {
@@ -354,6 +408,15 @@ namespace CsvViewer.Resources {
         internal static string ROWS {
             get {
                 return ResourceManager.GetString("ROWS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string SEARCH {
+            get {
+                return ResourceManager.GetString("SEARCH", resourceCulture);
             }
         }
         

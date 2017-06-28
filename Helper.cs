@@ -14,12 +14,18 @@ namespace CsvViewer
 {
     public static class Helper
     {
-        public static async Task<List<string>> GetCsvRows(CsvOptions options, int page, int pageSize)
+        public static FileEnumerable FileReader = new FileEnumerable();
+
+        public static async Task<List<string>> GetCsvRows(CsvOptions options, CsvColumnFilter filter, int page, int pageSize)
         {
             if (options.FilePath.IsNullOrEmpty())
                 throw new ArgumentException(@"File path is empty.");
 
-            var rowEnumerable = FileEnumerable.ReadOnly(options.FilePath, Encoding.UTF8)
+            if (FileReader?.Path != options.FilePath)
+                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding).EnableBuffer();
+
+            var rowEnumerable = FileReader
+                .Reset()
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .Where(x => x.IsNotNullOrEmpty());
@@ -31,12 +37,25 @@ namespace CsvViewer
                 return new List<string>();
 
             List<string> rows;
-            if (options.GetColumnNamesFromFirstRow && await rowEnumerable.HasMoreRowsThanAsync(1))
+            if (options.GetColumnNamesFromFirstRow && await rowEnumerable.HasMoreLinesThanAsync(1))
             {
                 var header = rowEnumerable.First();
+
+                if (filter?.IsValid() ?? false)
+                {
+                    rowEnumerable = rowEnumerable
+                            .Where(x => x.Split(options.Delimiter.Character)[filter.Index].ContainsQuick(filter.Keyword));
+                }
+
                 rows = await rowEnumerable.Skip(rowEnumerable.SkipAmount + 1).ToListAsync();
                 rows.Insert(0, header);
                 return rows;
+            }
+
+            if (filter?.IsValid() ?? false)
+            {
+                rowEnumerable = rowEnumerable
+                    .Where(x => x.ContainsQuick(x.Split(options.Delimiter.Character)[filter.Index]));
             }
 
             rows = await rowEnumerable.ToListAsync();
@@ -48,7 +67,10 @@ namespace CsvViewer
             if (!options.IsValid())
                 return 0;
 
-            var rowCount = FileEnumerable.ReadOnly(options.FilePath, Encoding.UTF8).Count();
+            if (FileReader == null)
+                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding);
+
+            var rowCount = FileReader.Count();
             return rowCount;
         }
 
@@ -57,7 +79,10 @@ namespace CsvViewer
             if (!options.IsValid())
                 return 0;
 
-            var rowCount = await FileEnumerable.ReadOnly(options.FilePath, Encoding.UTF8).CountAsync();
+            if (FileReader == null)
+                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding);
+
+            var rowCount = await FileReader.CountAsync();
             return rowCount;
         }
 
@@ -66,7 +91,10 @@ namespace CsvViewer
             if (!options.IsValid())
                 return 0;
 
-            var row = await FileEnumerable.ReadOnly(options.FilePath, Encoding.UTF8).FirstAsync();
+            if (FileReader == null)
+                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding);
+
+            var row = await FileReader.FirstAsync();
             return row.Split(options.Delimiter.Character).Length;
         }
     }
