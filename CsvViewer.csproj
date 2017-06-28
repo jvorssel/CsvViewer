@@ -117,9 +117,11 @@
     <None Include="Resources\Main.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="Resources\GitHub.png" />
     <Content Include="Resources\LinkedIn.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (powershell Compress-Archive -Path '$(TargetDir)*.dll', '$(TargetDir)*.exe' -DestinationPath '$(SolutionDir)Publish\CsvViewer.zip' -Force)</PostBuildEvent>
