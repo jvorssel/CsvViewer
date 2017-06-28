@@ -1,25 +1,11 @@
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Release\CsvViewer.csprojResolveAssemblyReference.cache
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Release\CsvViewer.Container.resources
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Release\CsvViewer.Properties.Resources.resources
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Release\CsvViewer.Resources.Strings.resources
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Release\CsvViewer.csproj.GenerateResource.Cache
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Release\CsvViewer.exe.config
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Release\CsvViewer.exe
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Release\CsvViewer.pdb
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Release\Common.Utility.dll
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Release\PhoneNumbers.dll
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Release\Common.Utility.pdb
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Release\Common.Utility.dll.config
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Release\CsvViewer.exe
-C:\Users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Release\CsvViewer.pdb
+C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Release\CsvViewer.exe.config
+C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Release\CsvViewer.exe
+C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Release\CsvViewer.pdb
 C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.csprojResolveAssemblyReference.cache
+C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.About.resources
 C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.Container.resources
 C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.Properties.Resources.resources
 C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.Resources.Strings.resources
 C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.csproj.GenerateResource.Cache
 C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.exe
 C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.pdb
-C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Release\CsvViewer.exe.config
-C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Release\CsvViewer.exe
-C:\Users\jvors\Documents\GitHub\CsvViewer\bin\Release\CsvViewer.pdb
-C:\Users\jvors\Documents\GitHub\CsvViewer\obj\Release\CsvViewer.About.resources

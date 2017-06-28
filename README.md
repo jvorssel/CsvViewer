@@ -1,5 +1,5 @@
 # .NET CsvViewer
-I couldn't find a quick and easy CSV viewer so I created one.
+I couldn't find a quick and easy CSV viewer and I didn't want to open Excel every time so I created one.
 
 * Able to load really large files >1GB.<br>
 * Simple and easy to use.
