@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OPEN_FILE" xml:space="preserve">
+    <value>Open file</value>
+  </data>
+  <data name="NO_FILE_SELECTED" xml:space="preserve">
+    <value>No file selected</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CONFIRM" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="FILE" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="DELIMITER" xml:space="preserve">
+    <value>Delimiter</value>
+  </data>
+  <data name="COMMA" xml:space="preserve">
+    <value>Comma</value>
+  </data>
+  <data name="CSV_FILE" xml:space="preserve">
+    <value>Csv file (*.csv)</value>
+  </data>
+  <data name="DOT" xml:space="preserve">
+    <value>Dot</value>
+  </data>
+  <data name="NO_DELIMITER_SELECTED" xml:space="preserve">
+    <value>No delimiter selected</value>
+  </data>
+  <data name="PIPE" xml:space="preserve">
+    <value>Pipe</value>
+  </data>
+  <data name="TAB" xml:space="preserve">
+    <value>Tab</value>
+  </data>
+  <data name="TXT_FILE" xml:space="preserve">
+    <value>Text file (*.txt)</value>
+  </data>
+  <data name="WHITESPACE" xml:space="preserve">
+    <value>Whitespace</value>
+  </data>
+  <data name="RESULT" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="COMMENT" xml:space="preserve">
+    <value>Comment Symbol</value>
+  </data>
+  <data name="SKIP_COMMENT_LINE" xml:space="preserve">
+    <value>I will skip rows that start with '{0}'.</value>
+  </data>
+  <data name="HAS_COLUMN_LINE" xml:space="preserve">
+    <value>The first line contains column names.</value>
+  </data>
+  <data name="SELECTING_FILE" xml:space="preserve">
+    <value>Selecting a file.</value>
+  </data>
+  <data name="LOADING" xml:space="preserve">
+    <value>Loading file</value>
+  </data>
+  <data name="LOAD_COMPLETE" xml:space="preserve">
+    <value>Load complete</value>
+  </data>
+  <data name="COLUMNS" xml:space="preserve">
+    <value>COLS</value>
+  </data>
+  <data name="COLUMN" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="ROWS" xml:space="preserve">
+    <value>ROWS</value>
+  </data>
+  <data name="VIEWING" xml:space="preserve">
+    <value>Viewing</value>
+  </data>
+  <data name="UPDATING_OPTIONS" xml:space="preserve">
+    <value>Updating file options</value>
+  </data>
+  <data name="FILTER_COLUMN" xml:space="preserve">
+    <value>Filter column</value>
+  </data>
+  <data name="PAGE" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="SEMICOLON" xml:space="preserve">
+    <value>Semicolon</value>
+  </data>
+  <data name="BACKSLACK" xml:space="preserve">
+    <value>Backslash</value>
+  </data>
+  <data name="DOUBLE_QUOTE" xml:space="preserve">
+    <value>Dubbeel aanhalingstekens</value>
+  </data>
+  <data name="QUOTE" xml:space="preserve">
+    <value>Aanhalingsteken</value>
+  </data>
+  <data name="UNABLE_TO_READ_DELIMITER" xml:space="preserve">
+    <value>Unable to resolve the csv file delimiter.</value>
+  </data>
+  <data name="INDICES" xml:space="preserve">
+    <value>Incides</value>
+  </data>
+  <data name="VIEW" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ABOUT" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="CLOSE" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="OPTIONS" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="SIZE" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="VIEW_ROWS" xml:space="preserve">
+    <value>View rows</value>
+  </data>
+</root>

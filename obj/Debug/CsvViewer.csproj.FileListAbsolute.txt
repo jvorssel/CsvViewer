@@ -1,0 +1,10 @@
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Debug\CsvViewer.exe.config
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Debug\CsvViewer.exe
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\bin\Debug\CsvViewer.pdb
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.csprojResolveAssemblyReference.cache
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.Container.resources
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.Properties.Resources.resources
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.Resources.Strings.resources
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.csproj.GenerateResource.Cache
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.exe
+c:\users\jvors\documents\Visual Studio 2017\Projects\CsvViewer\CsvViewer\obj\Debug\CsvViewer.pdb
