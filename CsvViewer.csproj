@@ -76,9 +76,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utility\Comparators\AlphaNumericComparator.cs" />
+    <Compile Include="Utility\SearchCondition.cs" />
     <Compile Include="Utility\DictionaryExtensions.cs" />
     <Compile Include="Utility\ExpressionExtensions.cs" />
     <Compile Include="Utility\FileEnumerable.cs" />
+    <Compile Include="Utility\SearchConditionExtensions.cs" />
     <Compile Include="Utility\StringExtensions.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
@@ -116,7 +119,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Publish\CsvViewer.zip" />
     <None Include="Resources\Main.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -124,7 +126,9 @@
     <Content Include="Resources\GitHub.png" />
     <Content Include="Resources\LinkedIn.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Publish\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (powershell Compress-Archive -Path '$(TargetDir)*.dll', '$(TargetDir)*.exe' -DestinationPath '$(SolutionDir)Publish\CsvViewer.zip' -Force)</PostBuildEvent>

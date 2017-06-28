@@ -12,7 +12,7 @@ namespace CsvViewer.Utility {
         ///     <paramref name="contains"/> a value.
         /// </summary>
         public static bool ContainsQuick(this string @this, string contains)
-            => (@this.Length - @this.Replace(contains, string.Empty).Length) / contains.Length > 0;
+            => @this.IndexOf(contains, StringComparison.OrdinalIgnoreCase) > -1;
 
         /// <summary>
         ///     Find the Delimiter symbol in the <see cref="IEnumerable{T}"/> <paramref name="rows"/>

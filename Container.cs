@@ -45,12 +45,13 @@ namespace CsvViewer
             EncodingDropDown.Enabled = enabled;
             DelimiterDropDown.Enabled = enabled;
             ColumnDropDown.Enabled = enabled;
+            SearchConditionDropDown.Enabled = enabled;
 
             KeywordTextBox.Enabled = enabled;
             CommentSymbolTextBox.Enabled = enabled;
             HasColumnRowCheckBox.Enabled = enabled;
 
-            SearchButton.Enabled = enabled && Filter.IsValid();
+            SearchButton.Enabled = enabled;
 
             PageLabel.Text = $@"{Page}/{(_rowCount + PageSize - 1) / PageSize}";
 
@@ -93,8 +94,8 @@ namespace CsvViewer
                 Page = 1;
 
             var rows = await Helper.GetCsvRows(Options, Filter, Page, PageSize);
-            await OnLoadComplete();
             UpdateGrid(rows);
+            await OnLoadComplete();
         }
 
         private void UpdateGrid(List<string> rows)
@@ -103,6 +104,13 @@ namespace CsvViewer
             DataView.Columns.Clear();
             DataView.ReadOnly = true;
             DataView.ColumnHeadersVisible = true;
+
+            if (!rows.Any())
+            {
+                StatusStripLabel.Text = Strings.NO_RESULTS;
+                SearchValidLabel.Text = Strings.NO_RESULTS;
+                return;
+            }
 
             if (IndicesMenuItem.Checked)
                 DataView.Columns.Add("Index", "#");
@@ -120,13 +128,13 @@ namespace CsvViewer
                 enumerable = rows.Skip(1);
             }
 
-            var i = 0;
+            var colIndex = 0;
             foreach (var row in enumerable)
             {
-                i++;
+                colIndex++;
                 var split = row.Split(Options.Delimiter.Character).ToList();
                 if (IndicesMenuItem.Checked)
-                    split.Insert(0, ((Page - 1) * PageSize + i).ToString());
+                    split.Insert(0, ((Page - 1) * PageSize + colIndex).ToString());
 
                 DataView.Rows.Add(split.ToArray());
             }
@@ -134,14 +142,11 @@ namespace CsvViewer
             ColumnDropDown.Items.Clear();
             DataView.AutoResizeColumns();
             foreach (DataGridViewColumn column in DataView.Columns)
-                ColumnDropDown.Items.Add(column.HeaderText);
-        }
+            {
+                if (column.Name.ToLower() != "index")
+                    ColumnDropDown.Items.Add(column.HeaderText);
+            }
 
-        /// <summary>
-        ///     The main process to view the loaded data.
-        /// </summary>
-        private async Task OnLoadComplete()
-        {
             HeaderColumns.Clear();
             for (var i = 0; i < DataView.ColumnCount; i++)
             {
@@ -149,7 +154,13 @@ namespace CsvViewer
 
                 HeaderColumns.Add(text);
             }
+        }
 
+        /// <summary>
+        ///     The main process to view the loaded data.
+        /// </summary>
+        private async Task OnLoadComplete()
+        {
             StatusStripLabel.Text = Strings.LOAD_COMPLETE;
             _rowCount = Helper.CountRows(Options);
             _columnCount = await Helper.CountColumnsAsync(Options);
@@ -187,9 +198,13 @@ namespace CsvViewer
             foreach (var encoding in CsvOptions.TextEncoding)
                 EncodingDropDown.Items.Add(encoding.EncodingName);
 
+            foreach (var condition in CsvColumnFilter.Conditions)
+                SearchConditionDropDown.Items.Add(condition);
+
             ColumnDropDown.Enabled = false;
             IndicesMenuItem.Checked = true;
             EncodingDropDown.SelectedIndex = 4;
+            SearchConditionDropDown.SelectedIndex = 4;
 
             for (var index = 0; index < PageSizes.Length; index++)
             {
@@ -278,9 +293,9 @@ namespace CsvViewer
         private void FileWatcherOnChanged(object sender, FileSystemEventArgs fileSystemEventArgs)
         {
             FileUpdatedPanel.Invoke((MethodInvoker)(() =>
-           {
-               FileUpdatedPanel.Visible = true;
-           }));
+            {
+                FileUpdatedPanel.Visible = true;
+            }));
         }
 
         /// <summary>
@@ -331,6 +346,8 @@ namespace CsvViewer
 
             await LoadCsvData();
         }
+
+
 
         /// <summary>
         ///     User wants to close the app.
@@ -489,7 +506,8 @@ namespace CsvViewer
         private void ColumnDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             Filter.Index = ColumnDropDown.SelectedIndex;
-            SearchButton.Enabled = Filter.IsValid();
+            var isValid = Filter.IsValid(out string message);
+            SearchValidLabel.Text = message;
         }
 
         /// <summary>
@@ -504,14 +522,23 @@ namespace CsvViewer
             }
 
             Filter.Keyword = KeywordTextBox.Text;
-            SearchButton.Enabled = Filter.IsValid();
+            var isValid = Filter.IsValid(out string message);
+            SearchValidLabel.Text = message;
+        }
+
+        /// <summary>
+        ///     The User set a condition to look for.
+        /// </summary>
+        private void SearchConditionDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Filter.SetCondition(CsvColumnFilter.Conditions[SearchConditionDropDown.SelectedIndex]);
+            var isValid = Filter.IsValid(out string message);
+            SearchValidLabel.Text = message;
         }
 
         #endregion Find
 
         #endregion UI
-
-
 
 
     }

@@ -313,6 +313,15 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a column to search in..
+        /// </summary>
+        internal static string NO_COLUMN_SELECTED {
+            get {
+                return ResourceManager.GetString("NO_COLUMN_SELECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No delimiter selected.
         /// </summary>
         internal static string NO_DELIMITER_SELECTED {
@@ -327,6 +336,33 @@ namespace CsvViewer.Resources {
         internal static string NO_FILE_SELECTED {
             get {
                 return ResourceManager.GetString("NO_FILE_SELECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No keyword to look for..
+        /// </summary>
+        internal static string NO_KEYWORD {
+            get {
+                return ResourceManager.GetString("NO_KEYWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search returned any results..
+        /// </summary>
+        internal static string NO_RESULTS {
+            get {
+                return ResourceManager.GetString("NO_RESULTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a condition to search for..
+        /// </summary>
+        internal static string NO_SEARCH_CONDITION {
+            get {
+                return ResourceManager.GetString("NO_SEARCH_CONDITION", resourceCulture);
             }
         }
         
@@ -421,7 +457,16 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selecting a file..
+        ///   Looks up a localized string similar to The search condition requires a numeric keyword..
+        /// </summary>
+        internal static string SEARCH_CONDITION_REQUIRES_NUMBER {
+            get {
+                return ResourceManager.GetString("SEARCH_CONDITION_REQUIRES_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecting a file.
         /// </summary>
         internal static string SELECTING_FILE {
             get {
@@ -498,6 +543,15 @@ namespace CsvViewer.Resources {
         internal static string UPDATING_OPTIONS {
             get {
                 return ResourceManager.GetString("UPDATING_OPTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid.
+        /// </summary>
+        internal static string VALID {
+            get {
+                return ResourceManager.GetString("VALID", resourceCulture);
             }
         }
         

@@ -172,7 +172,7 @@
     <value>The first line contains column names.</value>
   </data>
   <data name="SELECTING_FILE" xml:space="preserve">
-    <value>Selecting a file.</value>
+    <value>Selecting a file</value>
   </data>
   <data name="LOADING" xml:space="preserve">
     <value>Loading file</value>
@@ -275,5 +275,23 @@
   </data>
   <data name="RELOAD" xml:space="preserve">
     <value>Reload</value>
+  </data>
+  <data name="NO_COLUMN_SELECTED" xml:space="preserve">
+    <value>Select a column to search in.</value>
+  </data>
+  <data name="NO_KEYWORD" xml:space="preserve">
+    <value>No keyword to look for.</value>
+  </data>
+  <data name="SEARCH_CONDITION_REQUIRES_NUMBER" xml:space="preserve">
+    <value>The search condition requires a numeric keyword.</value>
+  </data>
+  <data name="VALID" xml:space="preserve">
+    <value>Valid</value>
+  </data>
+  <data name="NO_SEARCH_CONDITION" xml:space="preserve">
+    <value>Please select a condition to search for.</value>
+  </data>
+  <data name="NO_RESULTS" xml:space="preserve">
+    <value>Search returned any results.</value>
   </data>
 </root>

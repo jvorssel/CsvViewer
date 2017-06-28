@@ -41,10 +41,10 @@ namespace CsvViewer
             {
                 var header = rowEnumerable.First();
 
-                if (filter?.IsValid() ?? false)
+                if (filter?.IsValid(out var msg) ?? false)
                 {
                     rowEnumerable = rowEnumerable
-                            .Where(x => x.Split(options.Delimiter.Character)[filter.Index].ContainsQuick(filter.Keyword));
+                        .Where(x => x.Split(options.Delimiter.Character)[filter.Index].WithCondition(filter.Keyword, filter.Condition));
                 }
 
                 rows = await rowEnumerable.Skip(rowEnumerable.SkipAmount + 1).ToListAsync();
@@ -52,10 +52,10 @@ namespace CsvViewer
                 return rows;
             }
 
-            if (filter?.IsValid() ?? false)
+            if (filter?.IsValid(out var msg2) ?? false)
             {
                 rowEnumerable = rowEnumerable
-                    .Where(x => x.ContainsQuick(x.Split(options.Delimiter.Character)[filter.Index]));
+                    .Where(x => x.Split(options.Delimiter.Character)[filter.Index].WithCondition(filter.Keyword, filter.Condition));
             }
 
             rows = await rowEnumerable.ToListAsync();

@@ -67,9 +67,11 @@ namespace CsvViewer
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.ColumnLabel = new System.Windows.Forms.Label();
             this.KeywordLabel = new System.Windows.Forms.Label();
-            this.ColumnDropDown = new System.Windows.Forms.ComboBox();
             this.KeywordTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
+            this.ColumnDropDown = new System.Windows.Forms.ComboBox();
+            this.SearchConditionDropDown = new System.Windows.Forms.ComboBox();
+            this.SearchValidLabel = new System.Windows.Forms.Label();
             this.DataView = new CsvViewer.CsvDataView();
             this.MenuStrip.SuspendLayout();
             this.ActionPanel.SuspendLayout();
@@ -253,9 +255,9 @@ namespace CsvViewer
             // CommentSymbolTextBox
             // 
             this.CommentSymbolTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CommentSymbolTextBox.Location = new System.Drawing.Point(275, 29);
+            this.CommentSymbolTextBox.Location = new System.Drawing.Point(187, 29);
             this.CommentSymbolTextBox.Name = "CommentSymbolTextBox";
-            this.CommentSymbolTextBox.Size = new System.Drawing.Size(267, 20);
+            this.CommentSymbolTextBox.Size = new System.Drawing.Size(178, 20);
             this.CommentSymbolTextBox.TabIndex = 14;
             this.CommentSymbolTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CommentSymbolTextBox_KeyUp);
             // 
@@ -287,9 +289,9 @@ namespace CsvViewer
             this.DelimiterDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DelimiterDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DelimiterDropDown.FormattingEnabled = true;
-            this.DelimiterDropDown.Location = new System.Drawing.Point(275, 3);
+            this.DelimiterDropDown.Location = new System.Drawing.Point(187, 3);
             this.DelimiterDropDown.Name = "DelimiterDropDown";
-            this.DelimiterDropDown.Size = new System.Drawing.Size(267, 21);
+            this.DelimiterDropDown.Size = new System.Drawing.Size(178, 21);
             this.DelimiterDropDown.TabIndex = 14;
             this.DelimiterDropDown.SelectedIndexChanged += new System.EventHandler(this.DelimiterDropDown_SelectedIndexChanged);
             // 
@@ -367,7 +369,7 @@ namespace CsvViewer
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 106);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(368, 106);
             this.tableLayoutPanel1.TabIndex = 17;
             // 
             // EncodingLabel
@@ -386,9 +388,9 @@ namespace CsvViewer
             this.EncodingDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EncodingDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EncodingDropDown.FormattingEnabled = true;
-            this.EncodingDropDown.Location = new System.Drawing.Point(275, 55);
+            this.EncodingDropDown.Location = new System.Drawing.Point(187, 55);
             this.EncodingDropDown.Name = "EncodingDropDown";
-            this.EncodingDropDown.Size = new System.Drawing.Size(267, 21);
+            this.EncodingDropDown.Size = new System.Drawing.Size(178, 21);
             this.EncodingDropDown.TabIndex = 18;
             this.EncodingDropDown.SelectedIndexChanged += new System.EventHandler(this.EncodingDropDown_SelectedIndexChanged);
             // 
@@ -396,9 +398,9 @@ namespace CsvViewer
             // 
             this.FileUpdatedPanel.Controls.Add(this.ReloadLink);
             this.FileUpdatedPanel.Controls.Add(this.FileUpdatedLabel);
-            this.FileUpdatedPanel.Location = new System.Drawing.Point(275, 81);
+            this.FileUpdatedPanel.Location = new System.Drawing.Point(187, 81);
             this.FileUpdatedPanel.Name = "FileUpdatedPanel";
-            this.FileUpdatedPanel.Size = new System.Drawing.Size(267, 22);
+            this.FileUpdatedPanel.Size = new System.Drawing.Size(178, 22);
             this.FileUpdatedPanel.TabIndex = 19;
             this.FileUpdatedPanel.Visible = false;
             // 
@@ -406,7 +408,7 @@ namespace CsvViewer
             // 
             this.ReloadLink.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ReloadLink.AutoSize = true;
-            this.ReloadLink.Location = new System.Drawing.Point(229, 3);
+            this.ReloadLink.Location = new System.Drawing.Point(140, 3);
             this.ReloadLink.Name = "ReloadLink";
             this.ReloadLink.Size = new System.Drawing.Size(41, 13);
             this.ReloadLink.TabIndex = 1;
@@ -427,22 +429,25 @@ namespace CsvViewer
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
             this.tableLayoutPanel2.Controls.Add(this.ColumnLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.KeywordLabel, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.KeywordTextBox, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.SearchButton, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.ColumnDropDown, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.KeywordTextBox, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.SearchButton, 1, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(563, 27);
+            this.tableLayoutPanel2.Controls.Add(this.SearchConditionDropDown, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.SearchValidLabel, 0, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(389, 27);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(469, 106);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(314, 106);
             this.tableLayoutPanel2.TabIndex = 18;
             // 
             // ColumnLabel
@@ -467,36 +472,61 @@ namespace CsvViewer
             this.KeywordLabel.Text = "Keyword";
             this.KeywordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ColumnDropDown
-            // 
-            this.ColumnDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ColumnDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ColumnDropDown.FormattingEnabled = true;
-            this.ColumnDropDown.Location = new System.Drawing.Point(237, 3);
-            this.ColumnDropDown.Name = "ColumnDropDown";
-            this.ColumnDropDown.Size = new System.Drawing.Size(229, 21);
-            this.ColumnDropDown.TabIndex = 13;
-            this.ColumnDropDown.SelectedIndexChanged += new System.EventHandler(this.ColumnDropDown_SelectedIndexChanged);
-            // 
             // KeywordTextBox
             // 
             this.KeywordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KeywordTextBox.Location = new System.Drawing.Point(237, 29);
+            this.KeywordTextBox.Location = new System.Drawing.Point(165, 29);
             this.KeywordTextBox.Name = "KeywordTextBox";
-            this.KeywordTextBox.Size = new System.Drawing.Size(229, 20);
+            this.KeywordTextBox.Size = new System.Drawing.Size(146, 20);
             this.KeywordTextBox.TabIndex = 14;
             this.KeywordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeywordTextBox_KeyUp);
             // 
             // SearchButton
             // 
-            this.SearchButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SearchButton.Location = new System.Drawing.Point(237, 55);
+            this.tableLayoutPanel2.SetColumnSpan(this.SearchButton, 2);
+            this.SearchButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchButton.Location = new System.Drawing.Point(84, 81);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(229, 20);
+            this.SearchButton.Size = new System.Drawing.Size(227, 22);
             this.SearchButton.TabIndex = 15;
             this.SearchButton.Text = global::CsvViewer.Resources.Strings.SEARCH;
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.FindKeywordButton_Click);
+            // 
+            // ColumnDropDown
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.ColumnDropDown, 2);
+            this.ColumnDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ColumnDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ColumnDropDown.FormattingEnabled = true;
+            this.ColumnDropDown.Location = new System.Drawing.Point(84, 3);
+            this.ColumnDropDown.Name = "ColumnDropDown";
+            this.ColumnDropDown.Size = new System.Drawing.Size(227, 21);
+            this.ColumnDropDown.TabIndex = 13;
+            this.ColumnDropDown.SelectedIndexChanged += new System.EventHandler(this.ColumnDropDown_SelectedIndexChanged);
+            // 
+            // SearchConditionDropDown
+            // 
+            this.SearchConditionDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchConditionDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SearchConditionDropDown.FormattingEnabled = true;
+            this.SearchConditionDropDown.Location = new System.Drawing.Point(84, 29);
+            this.SearchConditionDropDown.Name = "SearchConditionDropDown";
+            this.SearchConditionDropDown.Size = new System.Drawing.Size(75, 21);
+            this.SearchConditionDropDown.TabIndex = 16;
+            this.SearchConditionDropDown.SelectedIndexChanged += new System.EventHandler(this.SearchConditionDropDown_SelectedIndexChanged);
+            // 
+            // SearchValidLabel
+            // 
+            this.SearchValidLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SearchValidLabel.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.SearchValidLabel, 3);
+            this.SearchValidLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchValidLabel.Location = new System.Drawing.Point(3, 58);
+            this.SearchValidLabel.Name = "SearchValidLabel";
+            this.SearchValidLabel.Size = new System.Drawing.Size(11, 13);
+            this.SearchValidLabel.TabIndex = 17;
+            this.SearchValidLabel.Text = "-";
             // 
             // DataView
             // 
@@ -588,6 +618,8 @@ namespace CsvViewer
         private Panel FileUpdatedPanel;
         private Label FileUpdatedLabel;
         private LinkLabel ReloadLink;
+        private ComboBox SearchConditionDropDown;
+        private Label SearchValidLabel;
     }
 }
 
