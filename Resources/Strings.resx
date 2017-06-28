@@ -181,13 +181,13 @@
     <value>Load complete</value>
   </data>
   <data name="COLUMNS" xml:space="preserve">
-    <value>COLS</value>
+    <value>Columns</value>
   </data>
   <data name="COLUMN" xml:space="preserve">
     <value>Column</value>
   </data>
   <data name="ROWS" xml:space="preserve">
-    <value>ROWS</value>
+    <value>Rows</value>
   </data>
   <data name="VIEWING" xml:space="preserve">
     <value>Viewing</value>
@@ -293,5 +293,14 @@
   </data>
   <data name="NO_RESULTS" xml:space="preserve">
     <value>Search returned any results.</value>
+  </data>
+  <data name="LENGTH" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="NO_SELECTION" xml:space="preserve">
+    <value>No selection</value>
+  </data>
+  <data name="SELECTED_CELL_INFO" xml:space="preserve">
+    <value>Row : {0} Index : {1} Length : {2}</value>
   </data>
 </root>

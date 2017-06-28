@@ -55,7 +55,9 @@ namespace CsvViewer
             this.DelimiterLabel = new System.Windows.Forms.Label();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.PlaceholderStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.PlaceholderStripLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.SelectionStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
+            this.PlaceholderStatusStrip2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ColumnCountStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.RowCountStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -310,7 +312,9 @@ namespace CsvViewer
             // 
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusStripLabel,
-            this.PlaceholderStripLabel,
+            this.PlaceholderStripLabel1,
+            this.SelectionStatusStrip,
+            this.PlaceholderStatusStrip2,
             this.ColumnCountStripLabel,
             this.RowCountStripLabel});
             this.StatusStrip.Location = new System.Drawing.Point(0, 660);
@@ -326,27 +330,39 @@ namespace CsvViewer
             this.StatusStripLabel.Size = new System.Drawing.Size(88, 19);
             this.StatusStripLabel.Text = global::CsvViewer.Resources.Strings.NO_FILE_SELECTED;
             // 
-            // PlaceholderStripLabel
+            // PlaceholderStripLabel1
             // 
-            this.PlaceholderStripLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.PlaceholderStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.PlaceholderStripLabel.Name = "PlaceholderStripLabel";
-            this.PlaceholderStripLabel.Size = new System.Drawing.Size(1222, 19);
-            this.PlaceholderStripLabel.Spring = true;
-            this.PlaceholderStripLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.PlaceholderStripLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.PlaceholderStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.PlaceholderStripLabel1.Name = "PlaceholderStripLabel1";
+            this.PlaceholderStripLabel1.Size = new System.Drawing.Size(567, 19);
+            this.PlaceholderStripLabel1.Spring = true;
+            this.PlaceholderStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // SelectionStatusStrip
+            // 
+            this.SelectionStatusStrip.Name = "SelectionStatusStrip";
+            this.SelectionStatusStrip.Size = new System.Drawing.Size(73, 19);
+            this.SelectionStatusStrip.Text = global::CsvViewer.Resources.Strings.NO_SELECTION;
+            // 
+            // PlaceholderStatusStrip2
+            // 
+            this.PlaceholderStatusStrip2.Name = "PlaceholderStatusStrip2";
+            this.PlaceholderStatusStrip2.Size = new System.Drawing.Size(567, 19);
+            this.PlaceholderStatusStrip2.Spring = true;
             // 
             // ColumnCountStripLabel
             // 
             this.ColumnCountStripLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.ColumnCountStripLabel.Name = "ColumnCountStripLabel";
-            this.ColumnCountStripLabel.Size = new System.Drawing.Size(40, 19);
+            this.ColumnCountStripLabel.Size = new System.Drawing.Size(59, 19);
             this.ColumnCountStripLabel.Text = global::CsvViewer.Resources.Strings.COLUMNS;
             // 
             // RowCountStripLabel
             // 
             this.RowCountStripLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.RowCountStripLabel.Name = "RowCountStripLabel";
-            this.RowCountStripLabel.Size = new System.Drawing.Size(44, 19);
+            this.RowCountStripLabel.Size = new System.Drawing.Size(39, 19);
             this.RowCountStripLabel.Text = global::CsvViewer.Resources.Strings.ROWS;
             // 
             // tableLayoutPanel1
@@ -541,6 +557,7 @@ namespace CsvViewer
             this.DataView.Name = "DataView";
             this.DataView.Size = new System.Drawing.Size(1385, 472);
             this.DataView.TabIndex = 1;
+            this.DataView.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.DataViewOnCellStateChanged);
             this.DataView.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.DataView_SortCompare);
             // 
             // Container
@@ -576,7 +593,7 @@ namespace CsvViewer
 
         }
 
-
+        
 
         private MenuStrip MenuStrip;
         private ToolStripMenuItem FileMenuItem;
@@ -585,7 +602,7 @@ namespace CsvViewer
         private Panel ActionPanel;
         private StatusStrip StatusStrip;
         private ToolStripStatusLabel StatusStripLabel;
-        private ToolStripStatusLabel PlaceholderStripLabel;
+        private ToolStripStatusLabel PlaceholderStripLabel1;
         private ToolStripStatusLabel ColumnCountStripLabel;
         private ToolStripStatusLabel RowCountStripLabel;
         private Label PageLabel;
@@ -620,6 +637,8 @@ namespace CsvViewer
         private LinkLabel ReloadLink;
         private ComboBox SearchConditionDropDown;
         private Label SearchValidLabel;
+        private ToolStripStatusLabel SelectionStatusStrip;
+        private ToolStripStatusLabel PlaceholderStatusStrip2;
     }
 }
 

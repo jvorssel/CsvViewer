@@ -131,6 +131,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release (powershell Compress-Archive -Path '$(TargetDir)*.dll', '$(TargetDir)*.exe' -DestinationPath '$(SolutionDir)Publish\CsvViewer.zip' -Force)</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetName).exe" "$(SolutionDir)Publish\$(TargetName).exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -237,6 +237,27 @@ namespace CsvViewer
         }
 
         /// <summary>
+        ///     Cell state changed.
+        /// </summary>
+        private void DataViewOnCellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            var format = Strings.SELECTED_CELL_INFO;
+            SelectionStatusStrip.Text = string.Format(format,
+                e.Cell.RowIndex,
+                e.Cell.ColumnIndex,
+                e.Cell.Value.ToString().Length);
+
+            if (ColumnDropDown.Items.Count <= 0)
+                return;
+
+            var index = IndicesMenuItem.Checked ? e.Cell.ColumnIndex - 1 : e.Cell.ColumnIndex;
+            if (index >= ColumnDropDown.Items.Count)
+                index = ColumnDropDown.Items.Count - 1;
+
+            ColumnDropDown.SelectedIndex = index;
+        }
+
+        /// <summary>
         ///     Open a <see cref="FileDialog"/> from the tool strip menu item.
         /// </summary>
         private async void OpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -252,6 +273,7 @@ namespace CsvViewer
                 Page = 1;
                 StatusStripLabel.Text = string.Empty;
 
+                Filter = new CsvColumnFilter();
 
                 var delimiters = CsvOptions.Delimiters.Select(x => x.Character).ToList();
                 var fileName = dialog.FileName;
@@ -535,6 +557,7 @@ namespace CsvViewer
             var isValid = Filter.IsValid(out string message);
             SearchValidLabel.Text = message;
         }
+
 
         #endregion Find
 

@@ -115,7 +115,7 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to COLS.
+        ///   Looks up a localized string similar to Columns.
         /// </summary>
         internal static string COLUMNS {
             get {
@@ -277,6 +277,15 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Length.
+        /// </summary>
+        internal static string LENGTH {
+            get {
+                return ResourceManager.GetString("LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LinkedIn.
         /// </summary>
         internal static string LINKED_IN {
@@ -367,6 +376,15 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No selection.
+        /// </summary>
+        internal static string NO_SELECTION {
+            get {
+                return ResourceManager.GetString("NO_SELECTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open file.
         /// </summary>
         internal static string OPEN_FILE {
@@ -439,7 +457,7 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ROWS.
+        ///   Looks up a localized string similar to Rows.
         /// </summary>
         internal static string ROWS {
             get {
@@ -462,6 +480,15 @@ namespace CsvViewer.Resources {
         internal static string SEARCH_CONDITION_REQUIRES_NUMBER {
             get {
                 return ResourceManager.GetString("SEARCH_CONDITION_REQUIRES_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Row : {0} Index : {1} Length : {2}.
+        /// </summary>
+        internal static string SELECTED_CELL_INFO {
+            get {
+                return ResourceManager.GetString("SELECTED_CELL_INFO", resourceCulture);
             }
         }
         

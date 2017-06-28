@@ -5,4 +5,4 @@ I couldn't find a quick and easy CSV viewer and I didn't want to open Excel ever
 * Simple and easy to use.
 * Pagination for improved performance on older systems.
 
-#### [DOWNLOAD](https://raw.githubusercontent.com/jvorssel/CsvViewer/master/Publish/CsvViewer.zip)
+#### [DOWNLOAD](https://raw.githubusercontent.com/jvorssel/CsvViewer/master/Publish/CsvViewer.exe)
