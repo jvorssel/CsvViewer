@@ -303,4 +303,7 @@
   <data name="SELECTED_CELL_INFO" xml:space="preserve">
     <value>Row : {0} Index : {1} Length : {2}</value>
   </data>
+  <data name="RESET" xml:space="preserve">
+    <value>Reset</value>
+  </data>
 </root>

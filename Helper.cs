@@ -24,6 +24,7 @@ namespace CsvViewer
             if (FileReader?.Path != options.FilePath)
                 FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding).EnableBuffer();
 
+
             var rowEnumerable = FileReader
                 .Reset()
                 .Skip((page - 1) * pageSize)

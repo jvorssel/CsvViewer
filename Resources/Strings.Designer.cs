@@ -448,6 +448,15 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string RESET {
+            get {
+                return ResourceManager.GetString("RESET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Result.
         /// </summary>
         internal static string RESULT {

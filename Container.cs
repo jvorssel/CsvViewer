@@ -49,6 +49,8 @@ namespace CsvViewer
             CommentSymbolTextBox.Enabled = enabled;
             HasColumnRowCheckBox.Enabled = enabled;
 
+
+            ResetFilterButton.Enabled = enabled;
             SearchButton.Enabled = enabled;
 
             PageLabel.Text = $@"{Page}/{(_rowCount + PageSize - 1) / PageSize}";
@@ -199,8 +201,8 @@ namespace CsvViewer
             IndicesMenuItem.Checked = true;
             EncodingDropDown.SelectedIndex = 4;
             SearchConditionDropDown.SelectedIndex = 4;
-            
-            
+
+
 
             for (var index = 0; index < PageSizes.Length; index++)
             {
@@ -556,6 +558,19 @@ namespace CsvViewer
             SearchValidLabel.Text = message;
         }
 
+        /// <summary>
+        ///     The User wants to reset the filter.
+        /// </summary>
+        private async void ResetFilterButton_Click(object sender, EventArgs e)
+        {
+            KeywordTextBox.Text = "";
+            ColumnDropDown.SelectedIndex = 0;
+            SearchConditionDropDown.SelectedIndex = 0;
+
+            Filter = new CsvColumnFilter();
+
+            await LoadCsvData();
+        }
 
         #endregion Find
 

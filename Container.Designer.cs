@@ -74,6 +74,7 @@ namespace CsvViewer
             this.ColumnDropDown = new System.Windows.Forms.ComboBox();
             this.SearchConditionDropDown = new System.Windows.Forms.ComboBox();
             this.SearchValidLabel = new System.Windows.Forms.Label();
+            this.ResetFilterButton = new System.Windows.Forms.Button();
             this.DataView = new CsvViewer.CsvDataView();
             this.MenuStrip.SuspendLayout();
             this.ActionPanel.SuspendLayout();
@@ -456,6 +457,7 @@ namespace CsvViewer
             this.tableLayoutPanel2.Controls.Add(this.ColumnDropDown, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.SearchConditionDropDown, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.SearchValidLabel, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.ResetFilterButton, 0, 3);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(389, 27);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
@@ -543,6 +545,16 @@ namespace CsvViewer
             this.SearchValidLabel.Size = new System.Drawing.Size(11, 13);
             this.SearchValidLabel.TabIndex = 17;
             this.SearchValidLabel.Text = "-";
+            // 
+            // ResetFilterButton
+            // 
+            this.ResetFilterButton.Location = new System.Drawing.Point(3, 81);
+            this.ResetFilterButton.Name = "ResetFilterButton";
+            this.ResetFilterButton.Size = new System.Drawing.Size(75, 22);
+            this.ResetFilterButton.TabIndex = 18;
+            this.ResetFilterButton.Text = global::CsvViewer.Resources.Strings.RESET;
+            this.ResetFilterButton.UseVisualStyleBackColor = true;
+            this.ResetFilterButton.Click += new System.EventHandler(this.ResetFilterButton_Click);
             // 
             // DataView
             // 
@@ -639,6 +651,7 @@ namespace CsvViewer
         private Label SearchValidLabel;
         private ToolStripStatusLabel SelectionStatusStrip;
         private ToolStripStatusLabel PlaceholderStatusStrip2;
+        private Button ResetFilterButton;
     }
 }
 
