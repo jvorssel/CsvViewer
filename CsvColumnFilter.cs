@@ -42,13 +42,13 @@ namespace CsvViewer
                 return false;
             }
 
-            if (Keyword.IsNullOrEmpty())
+            if (Keyword.IsNullOrEmpty() && Condition.RequiresKeyword())
             {
                 message = Strings.NO_KEYWORD;
                 return false;
             }
 
-            if ((Condition == SearchCondition.LongerThan || Condition == SearchCondition.ShorterOrEqual) && !int.TryParse(Keyword, out int number))
+            if (!int.TryParse(Keyword, out int number) && Condition.RequiresNumber())
             {
                 message = Strings.SEARCH_CONDITION_REQUIRES_NUMBER;
                 return false;
@@ -67,7 +67,13 @@ namespace CsvViewer
             SearchCondition.EqualTo,
             SearchCondition.NotEqualTo,
             SearchCondition.LongerThan,
-            SearchCondition.ShorterOrEqual
+            SearchCondition.ShorterOrEqual,
+            SearchCondition.HasValue ,
+            SearchCondition.IsEmpty,
+            SearchCondition.StartsWith,
+            SearchCondition.DoesNotStartWith,
+            SearchCondition.EndsWith,
+            SearchCondition.DoesNotEndWith,
         };
     }
 }

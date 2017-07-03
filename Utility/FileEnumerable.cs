@@ -35,7 +35,7 @@ namespace CsvViewer.Utility
 
         public FileEnumerable()
         {
-            
+
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace CsvViewer.Utility
         {
             _bufferThreshold = thresholdMb;
 
-            _useBuffer  = new FileInfo(Path).Length <= 50 * 1_000_000;
+            _useBuffer = new FileInfo(Path).Length <= 50 * 1_000_000;
             return this;
         }
 
@@ -144,59 +144,70 @@ namespace CsvViewer.Utility
         /// <summary>
         ///     Count the amount of rows asynchronously.
         /// </summary>
-        public async Task<long> CountAsync()
+        public async Task<long> CountAsync(Expression<Func<string, bool>> predicate = null)
         {
+            var expr = predicate?.Compile();
             if (_useBuffer && _buffer.Any())
-            {
-                return _predicate != null ? _buffer.Count(_predicate.Compile()) : _buffer.Count;
-            }
+                return _buffer.Count(line => expr?.Invoke(line) ?? true);
 
-            using (var file = new FileStream(Path, _fileMode, _fileAccess, _fileShare))
+            var count = 0;
+            using (var stream = ResolveStreamReader())
             {
-                long lineCount = 0;
-                var buffer = new byte[1024 * 1024];
-                int bytesRead;
-
-                do
+                string line;
+                while ((line = await stream.ReadLineAsync()) != null)
                 {
-                    bytesRead = await file.ReadAsync(buffer, 0, buffer.Length);
-                    for (var i = 0; i < bytesRead; i++)
-                        if (buffer[i] == '\n')
-                            lineCount++;
-                }
-                while (bytesRead > 0);
+                    if (!expr?.Invoke(line) ?? false)
+                        continue;
 
-                file.Close();
-                return lineCount;
+                    count++;
+                }
+
+                return count;
             }
         }
 
         /// <summary>
         ///     <see cref="Count"/> the amount of rows.
         /// </summary>
-        public long Count()
+        public long Count(Expression<Func<string, bool>> predicate = null)
         {
+            var expr = predicate?.Compile();
             if (_useBuffer && _buffer.Any())
-                return _predicate != null ? _buffer.Count(_predicate.Compile()) : _buffer.Count;
+                return _buffer.Count(line => expr?.Invoke(line) ?? true);
 
-            using (var file = new FileStream(Path, _fileMode, _fileAccess, _fileShare))
+            var count = 0;
+            using (var stream = ResolveStreamReader())
             {
-                long lineCount = 0;
-                var buffer = new byte[1024 * 1024];
-                int bytesRead;
-
-                do
+                string line;
+                while ((line = stream.ReadLine()) != null)
                 {
-                    bytesRead = file.Read(buffer, 0, buffer.Length);
-                    for (var i = 0; i < bytesRead; i++)
-                        if (buffer[i] == '\n')
-                            lineCount++;
-                }
-                while (bytesRead > 0);
+                    if (!expr?.Invoke(line) ?? true)
+                        continue;
 
-                file.Close();
-                return lineCount;
+                    count++;
+                }
+
+                return count;
             }
+
+            //using (var file = new FileStream(Path, _fileMode, _fileAccess, _fileShare))
+            //{
+            //    long lineCount = 0;
+            //    var buffer = new byte[1024 * 1024];
+            //    int bytesRead;
+
+            //    do
+            //    {
+            //        bytesRead = file.Read(buffer, 0, buffer.Length);
+            //        for (var i = 0; i < bytesRead; i++)
+            //            if (buffer[i] == '\n')
+            //                lineCount++;
+            //    }
+            //    while (bytesRead > 0);
+
+            //    file.Close();
+            //    return lineCount;
+            //}
         }
 
         /// <summary>
@@ -206,10 +217,11 @@ namespace CsvViewer.Utility
         {
             if (_useBuffer && _buffer.Any())
             {
+                var expr = _predicate?.Compile();
                 var count = 0;
                 foreach (var line in _buffer)
                 {
-                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                    if (!expr?.Invoke(line) ?? false)
                         continue;
 
                     if (count >= amount)
@@ -246,10 +258,11 @@ namespace CsvViewer.Utility
         {
             if (_useBuffer && _buffer.Any())
             {
+                var expr = _predicate?.Compile();
                 var count = 0;
                 foreach (var line in _buffer)
                 {
-                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                    if (!expr?.Invoke(line) ?? false)
                         continue;
 
                     if (count >= amount)
@@ -290,10 +303,11 @@ namespace CsvViewer.Utility
 
             using (var reader = ResolveStreamReader())
             {
+                var expr = _predicate?.Compile();
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                    if (!expr?.Invoke(line) ?? false)
                         continue;
 
                     return line;
@@ -314,10 +328,11 @@ namespace CsvViewer.Utility
 
             using (var reader = ResolveStreamReader())
             {
+                var expr = _predicate?.Compile();
                 string line;
                 while ((line = await reader.ReadLineAsync()) != null)
                 {
-                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                    if (!expr?.Invoke(line) ?? false)
                         continue;
 
                     return line;
@@ -334,20 +349,18 @@ namespace CsvViewer.Utility
         /// </summary>
         public async Task<List<string>> ToListAsync()
         {
+            var expr = _predicate?.Compile();
             if (_useBuffer && _buffer.Any())
             {
-                var enumerable = _buffer as IEnumerable<string>;
+                var enumerable = _buffer.Where(x => expr?.Invoke(x) ?? true);
 
                 if (SkipAmount > 0)
                     enumerable = enumerable.Skip(SkipAmount);
 
-                if (_predicate != null)
-                    enumerable = enumerable.Where(_predicate.Compile());
-
                 if (TakeAmount > 0)
                     enumerable = enumerable.Take(TakeAmount);
 
-                return enumerable.Take(TakeAmount).ToList();
+                return enumerable.ToList();
             }
 
             if (_useBuffer)
@@ -378,7 +391,7 @@ namespace CsvViewer.Utility
                     if (took >= TakeAmount)
                         break;
 
-                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                    if (!expr?.Invoke(line) ?? false)
                         continue;
 
                     took++;
@@ -396,6 +409,7 @@ namespace CsvViewer.Utility
         /// </summary>
         public IEnumerator<string> GetEnumerator()
         {
+            var expr = _predicate?.Compile();
             if (_useBuffer && _buffer.Any())
             {
                 var took = 0;
@@ -404,7 +418,7 @@ namespace CsvViewer.Utility
                     if (took >= TakeAmount)
                         break;
 
-                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                    if (!expr?.Invoke(line) ?? false)
                         continue;
 
                     took++;
@@ -437,7 +451,7 @@ namespace CsvViewer.Utility
                     if (took >= TakeAmount)
                         break;
 
-                    if (!_predicate?.Compile().Invoke(line) ?? false)
+                    if (!expr?.Invoke(line) ?? false)
                         continue;
 
                     took++;

@@ -45,9 +45,7 @@ namespace CsvViewer
             EncodingDropDown.Enabled = enabled;
             DelimiterDropDown.Enabled = enabled;
             ColumnDropDown.Enabled = enabled;
-            SearchConditionDropDown.Enabled = enabled;
 
-            KeywordTextBox.Enabled = enabled;
             CommentSymbolTextBox.Enabled = enabled;
             HasColumnRowCheckBox.Enabled = enabled;
 
@@ -94,8 +92,19 @@ namespace CsvViewer
                 Page = 1;
 
             var rows = await Helper.GetCsvRows(Options, Filter, Page, PageSize);
+            var selectedIndex = Filter.Index;
             UpdateGrid(rows);
-            await OnLoadComplete();
+
+            Filter.Index = selectedIndex;
+
+            StatusStripLabel.Text = Strings.LOAD_COMPLETE;
+            _rowCount = await Helper.CountRowsAsync(Options, Filter);
+            _columnCount = await Helper.CountColumnsAsync(Options);
+
+            RowCountStripLabel.Text = $@"{Strings.ROWS}: {_rowCount}";
+            ColumnCountStripLabel.Text = $@"{Strings.COLUMNS}: {_columnCount}";
+
+            SetEnabled(true);
         }
 
         private void UpdateGrid(List<string> rows)
@@ -156,21 +165,6 @@ namespace CsvViewer
             }
         }
 
-        /// <summary>
-        ///     The main process to view the loaded data.
-        /// </summary>
-        private async Task OnLoadComplete()
-        {
-            StatusStripLabel.Text = Strings.LOAD_COMPLETE;
-            _rowCount = Helper.CountRows(Options);
-            _columnCount = await Helper.CountColumnsAsync(Options);
-
-            RowCountStripLabel.Text = $@"{Strings.ROWS}: {_rowCount}";
-            ColumnCountStripLabel.Text = $@"{Strings.COLUMNS}: {_columnCount}";
-
-            SetEnabled(true);
-        }
-
         #endregion Worker
 
         #region UI
@@ -205,6 +199,8 @@ namespace CsvViewer
             IndicesMenuItem.Checked = true;
             EncodingDropDown.SelectedIndex = 4;
             SearchConditionDropDown.SelectedIndex = 4;
+            
+            
 
             for (var index = 0; index < PageSizes.Length; index++)
             {
@@ -274,6 +270,8 @@ namespace CsvViewer
                 StatusStripLabel.Text = string.Empty;
 
                 Filter = new CsvColumnFilter();
+                KeywordTextBox.Text = "";
+                ColumnDropDown.SelectedIndex = -1;
 
                 var delimiters = CsvOptions.Delimiters.Select(x => x.Character).ToList();
                 var fileName = dialog.FileName;

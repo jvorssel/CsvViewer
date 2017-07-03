@@ -27,8 +27,7 @@ namespace CsvViewer
             var rowEnumerable = FileReader
                 .Reset()
                 .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .Where(x => x.IsNotNullOrEmpty());
+                .Take(pageSize);
 
             if (!options.CommentSymbol.IsNullOrEmpty())
                 rowEnumerable = rowEnumerable.Where(x => !x.StartsWith(options.CommentSymbol));
@@ -62,27 +61,39 @@ namespace CsvViewer
             return rows;
         }
 
-        public static long CountRows(CsvOptions options)
+        public static long CountRows(CsvOptions options, CsvColumnFilter filter)
         {
             if (!options.IsValid())
                 return 0;
 
-            if (FileReader == null)
-                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding);
+            if (FileReader?.Path != options.FilePath)
+                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding).EnableBuffer();
 
-            var rowCount = FileReader.Count();
+            long rowCount;
+            if (filter.IsValid(out string msg))
+                rowCount = FileReader.Count(x => x.Split(options.Delimiter.Character)[filter.Index]
+                    .WithCondition(filter.Keyword, filter.Condition));
+            else
+                rowCount = FileReader.Count();
+
             return rowCount;
         }
 
-        public static async Task<long> CountRowsAsync(CsvOptions options)
+        public static async Task<long> CountRowsAsync(CsvOptions options, CsvColumnFilter filter)
         {
             if (!options.IsValid())
                 return 0;
 
-            if (FileReader == null)
-                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding);
+            if (FileReader?.Path != options.FilePath)
+                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding).EnableBuffer();
 
-            var rowCount = await FileReader.CountAsync();
+            long rowCount;
+            if (filter.IsValid(out string msg))
+                rowCount = await FileReader.CountAsync(x => x.Split(options.Delimiter.Character)[filter.Index]
+                    .WithCondition(filter.Keyword, filter.Condition));
+            else
+                rowCount = await FileReader.CountAsync();
+
             return rowCount;
         }
 
@@ -91,8 +102,8 @@ namespace CsvViewer
             if (!options.IsValid())
                 return 0;
 
-            if (FileReader == null)
-                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding);
+            if (FileReader?.Path != options.FilePath)
+                FileReader = FileEnumerable.ReadOnly(options.FilePath, options.Encoding).EnableBuffer();
 
             var row = await FileReader.FirstAsync();
             return row.Split(options.Delimiter.Character).Length;

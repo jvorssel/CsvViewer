@@ -11,5 +11,11 @@
         NotEqualTo = 6,
         LongerThan = 7,
         ShorterOrEqual = 8,
+        HasValue = 9,
+        IsEmpty = 10,
+        StartsWith = 11,
+        DoesNotStartWith = 12,
+        EndsWith = 13,
+        DoesNotEndWith = 14,
     }
 }
