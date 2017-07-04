@@ -45,7 +45,7 @@ namespace CsvViewer
             EncodingDropDown.Enabled = enabled;
             DelimiterDropDown.Enabled = enabled;
             ColumnDropDown.Enabled = enabled;
-
+            SaveFilterResultsButton.Enabled = enabled;
             CommentSymbolTextBox.Enabled = enabled;
             HasColumnRowCheckBox.Enabled = enabled;
 
