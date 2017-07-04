@@ -45,7 +45,7 @@ namespace CsvViewer
             EncodingDropDown.Enabled = enabled;
             DelimiterDropDown.Enabled = enabled;
             ColumnDropDown.Enabled = enabled;
-            SaveFilterResultsButton.Enabled = enabled;
+            SaveToolStripMenuItem.Enabled = enabled && _rowCount > 0;
             CommentSymbolTextBox.Enabled = enabled;
             HasColumnRowCheckBox.Enabled = enabled;
 
@@ -576,9 +576,9 @@ namespace CsvViewer
         /// <summary>
         ///     User wants to save the search results.
         /// </summary>
-        private async void SaveResults_Click(object sender, EventArgs e)
+        private async void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dialog = new SaveFileDialog()
+            var dialog = new SaveFileDialog
             {
                 Filter = $@"{Strings.CSV_FILE}|*.csv|{Strings.TXT_FILE}|*.txt",
                 RestoreDirectory = true
@@ -594,6 +594,7 @@ namespace CsvViewer
         #endregion Find
 
         #endregion UI
+
 
     }
 }

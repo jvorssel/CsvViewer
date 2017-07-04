@@ -35,6 +35,7 @@ namespace CsvViewer
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +69,6 @@ namespace CsvViewer
             this.ReloadLink = new System.Windows.Forms.LinkLabel();
             this.FileUpdatedLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.SaveFilterResultsButton = new System.Windows.Forms.Button();
             this.ColumnLabel = new System.Windows.Forms.Label();
             this.KeywordLabel = new System.Windows.Forms.Label();
             this.KeywordTextBox = new System.Windows.Forms.TextBox();
@@ -103,6 +103,7 @@ namespace CsvViewer
             // 
             this.FileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenMenuItem,
+            this.SaveToolStripMenuItem,
             this.aboutToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.FileMenuItem.Name = "FileMenuItem";
@@ -112,21 +113,28 @@ namespace CsvViewer
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(152, 22);
             this.OpenMenuItem.Text = global::CsvViewer.Resources.Strings.OPEN_FILE;
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
+            // 
+            // SaveToolStripMenuItem
+            // 
+            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveToolStripMenuItem.Text = global::CsvViewer.Resources.Strings.SAVE;
+            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = global::CsvViewer.Resources.Strings.ABOUT;
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = global::CsvViewer.Resources.Strings.CLOSE;
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -453,7 +461,6 @@ namespace CsvViewer
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.SaveFilterResultsButton, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.ColumnLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.KeywordLabel, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.KeywordTextBox, 2, 1);
@@ -471,18 +478,6 @@ namespace CsvViewer
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(314, 106);
             this.tableLayoutPanel2.TabIndex = 18;
-            // 
-            // SaveFilterResultsButton
-            // 
-            this.SaveFilterResultsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SaveFilterResultsButton.Location = new System.Drawing.Point(3, 81);
-            this.SaveFilterResultsButton.Name = "SaveFilterResultsButton";
-            this.SaveFilterResultsButton.Size = new System.Drawing.Size(98, 22);
-            this.SaveFilterResultsButton.TabIndex = 19;
-            this.SaveFilterResultsButton.Text = global::CsvViewer.Resources.Strings.SAVE_RESULTS;
-            this.SaveFileToolTip.SetToolTip(this.SaveFilterResultsButton, global::CsvViewer.Resources.Strings.SAVE_RESULTS_INFO);
-            this.SaveFilterResultsButton.UseVisualStyleBackColor = true;
-            this.SaveFilterResultsButton.Click += new System.EventHandler(this.SaveResults_Click);
             // 
             // ColumnLabel
             // 
@@ -518,9 +513,9 @@ namespace CsvViewer
             // SearchButton
             // 
             this.SearchButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchButton.Location = new System.Drawing.Point(211, 81);
+            this.SearchButton.Location = new System.Drawing.Point(107, 81);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(100, 22);
+            this.SearchButton.Size = new System.Drawing.Size(98, 22);
             this.SearchButton.TabIndex = 15;
             this.SearchButton.Text = global::CsvViewer.Resources.Strings.SEARCH;
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -564,7 +559,7 @@ namespace CsvViewer
             // ResetFilterButton
             // 
             this.ResetFilterButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ResetFilterButton.Location = new System.Drawing.Point(107, 81);
+            this.ResetFilterButton.Location = new System.Drawing.Point(3, 81);
             this.ResetFilterButton.Name = "ResetFilterButton";
             this.ResetFilterButton.Size = new System.Drawing.Size(98, 22);
             this.ResetFilterButton.TabIndex = 18;
@@ -621,7 +616,7 @@ namespace CsvViewer
 
         }
 
-        
+
 
         private MenuStrip MenuStrip;
         private ToolStripMenuItem FileMenuItem;
@@ -668,8 +663,8 @@ namespace CsvViewer
         private ToolStripStatusLabel SelectionStatusStrip;
         private ToolStripStatusLabel PlaceholderStatusStrip2;
         private Button ResetFilterButton;
-        private Button SaveFilterResultsButton;
         private ToolTip SaveFileToolTip;
+        private ToolStripMenuItem SaveToolStripMenuItem;
     }
 }
 
