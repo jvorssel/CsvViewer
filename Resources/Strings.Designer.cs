@@ -475,6 +475,24 @@ namespace CsvViewer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save results.
+        /// </summary>
+        internal static string SAVE_RESULTS {
+            get {
+                return ResourceManager.GetString("SAVE_RESULTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resulting rows for the search query will be saved, no formatting will be done..
+        /// </summary>
+        internal static string SAVE_RESULTS_INFO {
+            get {
+                return ResourceManager.GetString("SAVE_RESULTS_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         internal static string SEARCH {

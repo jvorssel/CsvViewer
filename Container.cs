@@ -263,7 +263,8 @@ namespace CsvViewer
             StatusStripLabel.Text = Strings.SELECTING_FILE;
             var dialog = new OpenFileDialog
             {
-                Filter = $@"{Strings.CSV_FILE}|*.csv|{Strings.TXT_FILE}|*.txt"
+                Filter = $@"{Strings.CSV_FILE}|*.csv|{Strings.TXT_FILE}|*.txt",
+                RestoreDirectory = true
             };
 
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -572,10 +573,27 @@ namespace CsvViewer
             await LoadCsvData();
         }
 
+        /// <summary>
+        ///     User wants to save the search results.
+        /// </summary>
+        private async void SaveResults_Click(object sender, EventArgs e)
+        {
+            var dialog = new SaveFileDialog()
+            {
+                Filter = $@"{Strings.CSV_FILE}|*.csv|{Strings.TXT_FILE}|*.txt",
+                RestoreDirectory = true
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                await Helper.SaveFile(Options, Filter, dialog.FileName);
+            }
+        }
+
+
         #endregion Find
 
         #endregion UI
-
 
     }
 }

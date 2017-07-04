@@ -31,6 +31,7 @@ namespace CsvViewer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +68,7 @@ namespace CsvViewer
             this.ReloadLink = new System.Windows.Forms.LinkLabel();
             this.FileUpdatedLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.SaveFilterResultsButton = new System.Windows.Forms.Button();
             this.ColumnLabel = new System.Windows.Forms.Label();
             this.KeywordLabel = new System.Windows.Forms.Label();
             this.KeywordTextBox = new System.Windows.Forms.TextBox();
@@ -76,6 +78,7 @@ namespace CsvViewer
             this.SearchValidLabel = new System.Windows.Forms.Label();
             this.ResetFilterButton = new System.Windows.Forms.Button();
             this.DataView = new CsvViewer.CsvDataView();
+            this.SaveFileToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MenuStrip.SuspendLayout();
             this.ActionPanel.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -447,9 +450,10 @@ namespace CsvViewer
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Controls.Add(this.SaveFilterResultsButton, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.ColumnLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.KeywordLabel, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.KeywordTextBox, 2, 1);
@@ -467,6 +471,18 @@ namespace CsvViewer
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(314, 106);
             this.tableLayoutPanel2.TabIndex = 18;
+            // 
+            // SaveFilterResultsButton
+            // 
+            this.SaveFilterResultsButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SaveFilterResultsButton.Location = new System.Drawing.Point(3, 81);
+            this.SaveFilterResultsButton.Name = "SaveFilterResultsButton";
+            this.SaveFilterResultsButton.Size = new System.Drawing.Size(98, 22);
+            this.SaveFilterResultsButton.TabIndex = 19;
+            this.SaveFilterResultsButton.Text = global::CsvViewer.Resources.Strings.SAVE_RESULTS;
+            this.SaveFileToolTip.SetToolTip(this.SaveFilterResultsButton, global::CsvViewer.Resources.Strings.SAVE_RESULTS_INFO);
+            this.SaveFilterResultsButton.UseVisualStyleBackColor = true;
+            this.SaveFilterResultsButton.Click += new System.EventHandler(this.SaveResults_Click);
             // 
             // ColumnLabel
             // 
@@ -493,19 +509,18 @@ namespace CsvViewer
             // KeywordTextBox
             // 
             this.KeywordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KeywordTextBox.Location = new System.Drawing.Point(165, 29);
+            this.KeywordTextBox.Location = new System.Drawing.Point(211, 29);
             this.KeywordTextBox.Name = "KeywordTextBox";
-            this.KeywordTextBox.Size = new System.Drawing.Size(146, 20);
+            this.KeywordTextBox.Size = new System.Drawing.Size(100, 20);
             this.KeywordTextBox.TabIndex = 14;
             this.KeywordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeywordTextBox_KeyUp);
             // 
             // SearchButton
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.SearchButton, 2);
             this.SearchButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchButton.Location = new System.Drawing.Point(84, 81);
+            this.SearchButton.Location = new System.Drawing.Point(211, 81);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(227, 22);
+            this.SearchButton.Size = new System.Drawing.Size(100, 22);
             this.SearchButton.TabIndex = 15;
             this.SearchButton.Text = global::CsvViewer.Resources.Strings.SEARCH;
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -517,9 +532,9 @@ namespace CsvViewer
             this.ColumnDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ColumnDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ColumnDropDown.FormattingEnabled = true;
-            this.ColumnDropDown.Location = new System.Drawing.Point(84, 3);
+            this.ColumnDropDown.Location = new System.Drawing.Point(107, 3);
             this.ColumnDropDown.Name = "ColumnDropDown";
-            this.ColumnDropDown.Size = new System.Drawing.Size(227, 21);
+            this.ColumnDropDown.Size = new System.Drawing.Size(204, 21);
             this.ColumnDropDown.TabIndex = 13;
             this.ColumnDropDown.SelectedIndexChanged += new System.EventHandler(this.ColumnDropDown_SelectedIndexChanged);
             // 
@@ -528,9 +543,9 @@ namespace CsvViewer
             this.SearchConditionDropDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchConditionDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SearchConditionDropDown.FormattingEnabled = true;
-            this.SearchConditionDropDown.Location = new System.Drawing.Point(84, 29);
+            this.SearchConditionDropDown.Location = new System.Drawing.Point(107, 29);
             this.SearchConditionDropDown.Name = "SearchConditionDropDown";
-            this.SearchConditionDropDown.Size = new System.Drawing.Size(75, 21);
+            this.SearchConditionDropDown.Size = new System.Drawing.Size(98, 21);
             this.SearchConditionDropDown.TabIndex = 16;
             this.SearchConditionDropDown.SelectedIndexChanged += new System.EventHandler(this.SearchConditionDropDown_SelectedIndexChanged);
             // 
@@ -548,9 +563,10 @@ namespace CsvViewer
             // 
             // ResetFilterButton
             // 
-            this.ResetFilterButton.Location = new System.Drawing.Point(3, 81);
+            this.ResetFilterButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResetFilterButton.Location = new System.Drawing.Point(107, 81);
             this.ResetFilterButton.Name = "ResetFilterButton";
-            this.ResetFilterButton.Size = new System.Drawing.Size(75, 22);
+            this.ResetFilterButton.Size = new System.Drawing.Size(98, 22);
             this.ResetFilterButton.TabIndex = 18;
             this.ResetFilterButton.Text = global::CsvViewer.Resources.Strings.RESET;
             this.ResetFilterButton.UseVisualStyleBackColor = true;
@@ -652,6 +668,8 @@ namespace CsvViewer
         private ToolStripStatusLabel SelectionStatusStrip;
         private ToolStripStatusLabel PlaceholderStatusStrip2;
         private Button ResetFilterButton;
+        private Button SaveFilterResultsButton;
+        private ToolTip SaveFileToolTip;
     }
 }
 

@@ -16,6 +16,42 @@ namespace CsvViewer
     {
         public static FileEnumerable FileReader = new FileEnumerable();
 
+        public static async Task SaveFile(CsvOptions options, CsvColumnFilter filter, string path)
+        {
+            if (FileReader == null)
+                throw new InvalidOperationException(@"The file reader is expected to be initialized beforehand.");
+
+            var rowEnumerable = FileReader.Reset();
+
+            List<string> rows;
+            if (options.GetColumnNamesFromFirstRow && await rowEnumerable.HasMoreLinesThanAsync(1))
+            {
+                var header = rowEnumerable.First();
+
+                if (filter?.IsValid(out var msg) ?? false)
+                {
+                    rowEnumerable = rowEnumerable
+                        .Where(x => x.Split(options.Delimiter.Character)[filter.Index]
+                            .WithCondition(filter.Keyword, filter.Condition));
+                }
+
+                rows = await rowEnumerable.Skip(rowEnumerable.SkipAmount + 1).ToListAsync();
+                rows.Insert(0, header);
+            }
+            else
+            {
+                if (filter?.IsValid(out var msg2) ?? false)
+                {
+                    rowEnumerable = rowEnumerable
+                        .Where(x => x.Split(options.Delimiter.Character)[filter.Index].WithCondition(filter.Keyword, filter.Condition));
+                }
+
+                rows = await rowEnumerable.ToListAsync();
+            }
+
+            File.WriteAllLines(path, rows, options.Encoding);
+        }
+
         public static async Task<List<string>> GetCsvRows(CsvOptions options, CsvColumnFilter filter, int page, int pageSize)
         {
             if (options.FilePath.IsNullOrEmpty())

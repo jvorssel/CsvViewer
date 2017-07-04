@@ -306,4 +306,10 @@
   <data name="RESET" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="SAVE_RESULTS" xml:space="preserve">
+    <value>Save results</value>
+  </data>
+  <data name="SAVE_RESULTS_INFO" xml:space="preserve">
+    <value>The resulting rows for the search query will be saved, no formatting will be done.</value>
+  </data>
 </root>
