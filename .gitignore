@@ -1,7 +1,8 @@
 ﻿/.vs
+/.vs/*
 /bin
 /bin/*
 /obj
 /obj/*
-/_ReSharper.Caches/ReSharperPlatformVs158_8be33be6.CsvViewer.00
-/_ReSharper.Caches/ReSharperPlatformVs158_8be33be6.CsvViewer.00
+/_ReSharper.Caches/*
+/_ReSharper.Caches/*
